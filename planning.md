@@ -60,9 +60,10 @@ My domain is Academics that includes courses, professors, exams and grading for 
 all-MiniLM-L6-v2 via sentence-transformers for general semantic understanding, supplemented by a domain-specific fine-tuned model if available to better capture nuances in academic reviews and discussions.
 
 **Top-k:**
+For tokens around 300-400, I would retrieve top 5 chunks as starting point to balance relevance and context. For even shorter chunks, I would go with top 3. Because higher chunks would lead to more noise and extremely lower chunks would make LLM hallucinate.
 
 **Production tradeoff reflection:**
-
+I would choose an embedding model that offers longer context windows to better understand full length of reviews and thread discussions even at the cost of higher latency. I would also add multilingual support which would cater to wider student body. As for domain-specific accuracy, I would consider fine-tuning a model that was trained on academic reviews and discussions, so that it can understand the semantic nuances of student feedback and advice. 
 ---
 
 ## Evaluation Plan
