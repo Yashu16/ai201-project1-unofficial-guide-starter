@@ -103,6 +103,41 @@ I would choose an embedding model that offers longer context windows to better u
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
 
+```mermaid
+flowchart LR
+     A[Document Ingestion] --> B[Chunking]
+     B --> C[Embedding & Vector Store]
+     C --> D[Retrieval]
+     D --> E[Generation / LLM]
+
+     subgraph Ingestion
+          A1[ingest.py: scrapers, APIs, manual uploads]
+     end
+
+     subgraph Chunking
+          B1[generator.py: clean_text(), source-aware chunker]
+     end
+
+     subgraph Embedding
+          C1[embed(all-MiniLM-L6-v2) -> chroma_db]
+     end
+
+     subgraph Retrieval
+          D1[retriever.py: top-k, metadata filters, optional reranker]
+     end
+
+     subgraph Generation
+          E1[app.py: prompt assembly, LLM call, response]
+     end
+
+     A1 --> B1 --> C1 --> D1 --> E1
+```
+
+- `Ingestion`: `ingest.py` gathers HTML, Reddit API data, PlanetTerp pages, and local docs; normalize to text + metadata (source, url, author, timestamp).
+- `Chunking`: `generator.py` applies source-aware policies (short-review atomic, 300–400 token narrative chunks, row-sized tables) and stores chunk-level metadata (professor, course, source).
+- `Embedding + Vector Store`: embed with `all-MiniLM-L6-v2` (or alternate) and store embeddings in `chroma_db` (Chroma/SQLite).
+- `Retrieval`: `retriever.py` performs similarity search (top-k, score cutoff), applies metadata filters, and optionally reranks top results.
+- `Generation`: `app.py` assembles the prompt (user question + retrieved chunks + source attributions), calls the LLM, and returns grounded answers.
 ---
 
 ## AI Tool Plan
