@@ -153,7 +153,10 @@ flowchart LR
      with my specified chunk size and overlap" is a plan. -->
 
 **Milestone 3 — Ingestion and chunking:**
+I will use Claude for this milestone. I will provide Claude with the Document Sources and Chunking Strategy sections of this planning document, along with specific requirements for how to handle different types of documents (e.g., reviews, structured pages). I expect Claude to produce a clear implementation plan for `ingest.py` and `generator.py`, including how to normalize and chunk the documents according to the specified strategies. I will verify the output by checking that the generated code correctly implements the ingestion and chunking logic as outlined in my planning document, and that it can process a sample set of documents without errors.
 
 **Milestone 4 — Embedding and retrieval:**
+For this milestone, I will use Copilot to assist with coding the embedding and retrieval stages. I will provide Copilot with the Retrieval Approach section of this planning document, along with any relevant code snippets from the previous milestone. I expect Copilot to generate code for embedding the chunks using the specified model and for implementing the retrieval logic that includes top-k search and metadata filtering. I will verify the output by running tests to ensure that the embedding and retrieval functions work as expected, returning relevant chunks based on sample queries.
 
 **Milestone 5 — Generation and interface:**
+I will use Copilot to help implement the generation stage and the user interface. I will provide Copilot with the Architecture section of this planning document, along with any relevant code from the previous milestones. I expect Copilot to generate code for assembling prompts, calling the LLM, and returning responses in a user-friendly format. I will verify the output by testing the end-to-end pipeline with sample questions to ensure that the system returns accurate and relevant answers based on the retrieved chunks.
