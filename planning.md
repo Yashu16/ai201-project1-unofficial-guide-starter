@@ -75,11 +75,11 @@ I would choose an embedding model that offers longer context windows to better u
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 | "Which CMSC professor is known for giving the most useful feedback on assignments?"| Accoding to PlanetTerp/Reddit: Professor X is well known for giving you not only their grades but also most useful feedback, infact, that feedback will help you in your midterms/finals. |
+| 2 | "Is CMSC351 actually as hard as people say, and how bad is the grade distribution?"| According to this Planet Terp grade distribution and planet terp CMSC351 course reviews: It depends on the professor you get, but it generally is difficult. Most students tend to get average grades in this course. |
+| 3 | "What do students wish they knew before taking CMSC216?"|According to Planet Terp and Reddit posts: You need to be well-versed with basic programming, and plan ahead for your projects and tests. Be good in C as this course is taught in that language. |
+| 4 |"How do TAs and office hours actually work in upper-level CS courses at UMD?" | According to these reddit posts: It's usually drop-in office hours instead of appointemnet based, and TAs will guide you with your project but mostly it needs to be done by you|
+| 5 | "Is the CS internship/research scene at UMD competitive, and how do students break in?"| According to Official UMD reddit: Go to your professor early if you want to work on research, understand their work and see if it aligns with your interests. As for internships, you tend to get government projects because of how UMD is located near DC  |
 
 ---
 
