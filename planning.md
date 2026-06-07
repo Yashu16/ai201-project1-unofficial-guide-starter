@@ -40,11 +40,11 @@ My domain is Academics that includes courses, professors, exams and grading for 
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:**
+**Chunk size:** Use source-aware chunks: 300-400 tokens for review and discussion text(keep whole text if short review(<= 50-65 tokens)), section-sized chunks for structured pages, and row-sized chunks for grade or record data.
 
-**Overlap:**
+**Overlap:** 50 tokens for narrative text; none for table-like or atomic records.
 
-**Reasoning:**
+**Reasoning:** The corpus mixes long informal threads with more structured factual pages, so one fixed chunk rule would either add too much noise or cut answers apart. Smaller overlapping chunks help preserve context in reviews and Reddit posts, while structured pages are better kept at natural boundaries so retrieval returns a complete fact instead of a split fragment.
 
 ---
 
@@ -56,7 +56,8 @@ My domain is Academics that includes courses, professors, exams and grading for 
      would you weigh in choosing a different embedding model — context length, multilingual
      support, accuracy on domain-specific text, latency? -->
 
-**Embedding model:**
+**Embedding model:** 
+all-MiniLM-L6-v2 via sentence-transformers for general semantic understanding, supplemented by a domain-specific fine-tuned model if available to better capture nuances in academic reviews and discussions.
 
 **Top-k:**
 
