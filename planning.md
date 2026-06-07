@@ -89,9 +89,9 @@ I would choose an embedding model that offers longer context windows to better u
      Consider: noisy or inconsistent documents, missing source attribution, off-topic
      retrieval, chunks that split key information across boundaries. -->
 
-1.
+1. Most likely thing to go wrong is student reviews and reddit threads can be noisy and inconsistent, which can lead to poor retrieval results. Sometimes the model might not undersand the sarcasm that usually exists in places like reddit, and that can lead to inaccurate answers. For example, if a student sarcastically says "Oh yeah, Professor X is the best, I just love getting 50% on every assignment", the model might interpret that as a positive review instead of a negative one, which can mislead users about the professor's teaching quality.
 
-2.
+2. Another likely issue would be that retrieved chunks might not stay true to the asked query, and might attribute off-topic sources. For example, if a question is about CMSC216, the retrieved chunks might be about CMSC351 because of the similar course code, which can lead to inaccurate answers.
 
 ---
 
