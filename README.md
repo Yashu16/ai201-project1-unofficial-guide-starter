@@ -13,7 +13,7 @@
      Why is this knowledge valuable, and why is it hard to find through official channels?
      Example: "Student reviews of CS professors at [university] — useful because official
      course descriptions don't reflect teaching style, exam difficulty, or workload." -->
-
+My domain is Academics that includes courses, professors, exams and grading for CS at UMD. UMD students often find it difficult to find information related to academics in one place. And usually, official channels like the university website or course catalog may not provide detailed insights into professors' teaching styles, course difficulty, or grading patterns. This system makes that informal knowledge searchable and accessible, helping students make informed decisions about their academic choices.
 ---
 
 ## Document Sources
@@ -24,16 +24,16 @@
 
 | # | Source | Type | URL or file path |
 |---|--------|------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | Planet terp Professors | Student reviews of UMD professors       | https://planetterp.com/professors        |
+| 2 | Planet terp CS courses | Student reviews of CS Courses at UMD    | https://planetterp.com/search?query=CMSC |
+| 3 | Planet terp Grades     | Grades categorized by courses/Professors| https://planetterp.com/grades            |
+| 4 | Rate my professor      |Student reviews of professors in RMP     | https://www.ratemyprofessors.com/school/1270 |
+| 5 | r/UMD - CS Opportunities | Students discussion threads for Job/Intern opp.| https://www.reddit.com/r/UMD/search/?q=CS+opportunities |
+| 6 | r/UMD - thread of Professors| Student discussion on Professors | https://www.reddit.com/r/umd/search/?q=professor|
+| 7 | r/UMD - CMSC| Student threads on CMSC courses | https://www.reddit.com/search/?q=UMD+CMSC |
+| 8 | r/UMD - exams|Students advice/discussion on exams |https://www.reddit.com/search/?q=UMD+exam+advice |
+| 9 | r/UMD - CS grades| Students advice/offer comfort on bad grades  |https://www.reddit.com/r/UMD/search/?q=grade+CS |
+| 10 | UMD official reddit | Advice for freshman related to acads |https://www.reddit.com/r/UMD/wiki/marylandprotips/?screen_view_count=6 |
 
 ---
 
