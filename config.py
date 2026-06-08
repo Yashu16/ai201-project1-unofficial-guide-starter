@@ -18,6 +18,15 @@ NARRATIVE_OVERLAP_TOKENS = 50
 SHORT_REVIEW_MAX_TOKENS = 65
 MIN_CHUNK_TOKENS = 20
 
+# --- Embedding & Retrieval ---
+CHROMA_PATH = ARTIFACTS_PATH / "chroma_db"
+CHROMA_COLLECTION = "umd_cs_chunks"
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+TOP_K_DEFAULT = 5
+TOP_K_SHORT = 3
+SHORT_CHUNK_TOKEN_THRESHOLD = 100  # chunks at or below this use TOP_K_SHORT
+RETRIEVAL_SCORE_CUTOFF = 1.2       # Chroma uses L2 distance; lower = more similar
+
 # You can edit this list as your source list changes.
 # source_kind drives chunking behavior.
 SOURCES = [
