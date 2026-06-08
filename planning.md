@@ -20,17 +20,19 @@ My domain is Academics that includes courses, professors, exams and grading for 
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | Planet terp Professors | Student reviews of UMD professors       | https://planetterp.com/professors        |
-| 2 | Planet terp CS courses | Student reviews of CS Courses at UMD    | https://planetterp.com/search?query=CMSC |
-| 3 | Planet terp Grades     | Grades categorized by courses/Professors| https://planetterp.com/grades            |
+| 1 | Planet terp CMSC Reviews | Student reviews of UMD CS professors       | "https://planetterp.com/api/v1/courses?department=CMSC&reviews=true&limit=100"|
+| 2 | Planet terp CMSC Reviews | Student reviews of UMD CS profs but different courses |"https://planetterp.com/api/v1/courses?department=CMSC&reviews=true&limit=100&offset=100"|
+| 3 | UMD CS current students   | Resources relating to current students | "https://undergrad.cs.umd.edu/current"|
 | 4 | Rate my professor      |Student reviews of professors in RMP     | https://www.ratemyprofessors.com/school/1270 |
-| 5 | r/UMD - CS Opportunities | Students discussion threads for Job/Intern opp.| https://www.reddit.com/r/UMD/search/?q=CS+opportunities |
-| 6 | r/UMD - thread of Professors| Student discussion on Professors | https://www.reddit.com/r/umd/search/?q=professor|
-| 7 | r/UMD - CMSC| Student threads on CMSC courses | https://www.reddit.com/search/?q=UMD+CMSC |
-| 8 | r/UMD - exams|Students advice/discussion on exams |https://www.reddit.com/search/?q=UMD+exam+advice |
-| 9 | r/UMD - CS grades| Students advice/offer comfort on bad grades  |https://www.reddit.com/r/UMD/search/?q=grade+CS |
+| 5 | r/UMD - CS Opportunities | Students discussion threads for Job/Intern opp.| "https://www.reddit.com/r/UMD/search/?q=CMSC+internship+research+opportunity&restrict_sr=1" |
+| 6 | r/UMD - thread of Professors| Student discussion on Professors | "https://www.reddit.com/r/UMD/search/?q=professor+review+class+CMSC&restrict_sr=1"|
+| 7 | r/UMD - CMSC| Student threads on CMSC courses | "https://www.reddit.com/r/UMD/search/?q=CMSC+course+review&restrict_sr=1" |
+| 8 | r/UMD - exams|Students advice/discussion on exams |"https://www.reddit.com/r/UMD/search/?q=CMSC+exam+midterm+final&restrict_sr=1"|
+| 9 | r/UMD - CS grades| Students advice/offer comfort on bad grades  |"https://www.reddit.com/r/UMD/search/?q=CMSC+grade+GPA&restrict_sr=1" |
 | 10 | UMD official reddit | Advice for freshman related to acads |https://www.reddit.com/r/UMD/wiki/marylandprotips/?screen_view_count=6 |
+| 11 | UMD FAQ | Official FAQ for UMD students |  "https://undergrad.cs.umd.edu/faq" |
 
+Updating above links because previous ones were not working, I was wrong about certain links. I have also added two official UMD sources so that students can find almost everything just by asking LLM instead of having to go through multiple sources.
 ---
 
 ## Chunking Strategy
