@@ -2,14 +2,15 @@ from __future__ import annotations
 
 import os
 import sys
-from typing import List, Dict
+from typing import List, Dict, Generator
 
 from dotenv import load_dotenv
 from groq import Groq, APIError
-
-load_dotenv()
+import gradio as gr
 
 from retriever import retrieve
+
+load_dotenv()
 
 MODEL = "llama-3.3-70b-versatile"
 
@@ -50,26 +51,33 @@ def _build_sources_list(chunks: List[Dict]) -> str:
         url = chunk.get("url", "")
         if source not in seen:
             seen[source] = url
-    lines = ["\nSources:"]
+    lines = ["\n\n---\n**Sources:**"]
     for i, (source, url) in enumerate(seen.items(), 1):
         if url:
-            lines.append(f"  [{i}] {source} — {url}")
+            lines.append(f"- [{source}]({url})")
         else:
-            lines.append(f"  [{i}] {source}")
+            lines.append(f"- {source}")
     return "\n".join(lines)
 
 
-def generate_answer(query: str, client: Groq) -> None:
+def _get_client() -> Groq:
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise RuntimeError("GROQ_API_KEY environment variable is not set.")
+    return Groq(api_key=api_key)
+
+
+def stream_answer(query: str, client: Groq) -> Generator[str, None, None]:
+    """Yields the answer token-by-token, then appends the sources block."""
     chunks = retrieve(query)
 
     if not chunks:
-        print("\nI don't have enough information in the retrieved sources to answer this question.\n")
+        yield "I don't have enough information in the retrieved sources to answer this question."
         return
 
     context_block = _build_context_block(chunks)
     user_message = f"{context_block}\n\nQuestion: {query}"
 
-    print()
     stream = client.chat.completions.create(
         model=MODEL,
         max_tokens=1024,
@@ -79,14 +87,44 @@ def generate_answer(query: str, client: Groq) -> None:
             {"role": "user", "content": user_message},
         ],
     )
+
+    full_text = ""
     for chunk in stream:
         text = chunk.choices[0].delta.content
         if text:
-            print(text, end="", flush=True)
+            full_text += text
+            yield full_text
 
-    print(_build_sources_list(chunks))
-    print()
+    yield full_text + _build_sources_list(chunks)
 
+
+# ── Gradio UI ──────────────────────────────────────────────────────────────────
+
+def _gradio_respond(message: str, history: list) -> Generator[str, None, None]:
+    client = _get_client()
+    yield from stream_answer(message, client)
+
+
+def launch_ui() -> None:
+    demo = gr.ChatInterface(
+        fn=_gradio_respond,
+        title="UMD CS Unofficial Guide",
+        description=(
+            "Ask about UMD CS courses, professors, exams, or grades. "
+            "Answers are grounded in student reviews and official sources."
+        ),
+        examples=[
+            "Which CMSC professor is known for giving the most useful feedback?",
+            "Is CMSC351 actually as hard as people say?",
+            "What do students wish they knew before taking CMSC216?",
+            "Is the CS internship scene at UMD competitive?",
+        ],
+        cache_examples=False,
+    )
+    demo.launch()
+
+
+# ── Terminal fallback ──────────────────────────────────────────────────────────
 
 def chat_loop() -> None:
     api_key = os.environ.get("GROQ_API_KEY")
@@ -114,10 +152,16 @@ def chat_loop() -> None:
             break
 
         try:
-            generate_answer(query, client)
+            print()
+            for partial in stream_answer(query, client):
+                print(f"\r{partial}", end="", flush=True)
+            print()
         except APIError as e:
             print(f"\nAPI error: {e}\n")
 
 
 if __name__ == "__main__":
-    chat_loop()
+    if "--terminal" in sys.argv:
+        chat_loop()
+    else:
+        launch_ui()
