@@ -13,7 +13,9 @@
      Why is this knowledge valuable, and why is it hard to find through official channels?
      Example: "Student reviews of CS professors at [university] — useful because official
      course descriptions don't reflect teaching style, exam difficulty, or workload." -->
+
 My domain is Academics that includes courses, professors, exams and grading for CS at UMD. UMD students often find it difficult to find information related to academics in one place. And usually, official channels like the university website or course catalog may not provide detailed insights into professors' teaching styles, course difficulty, or grading patterns. This system makes that informal knowledge searchable and accessible, helping students make informed decisions about their academic choices.
+
 ---
 
 ## Document Sources
@@ -37,6 +39,7 @@ My domain is Academics that includes courses, professors, exams and grading for 
 | 11 | UMD FAQ | Official FAQ for UMD students |  "https://undergrad.cs.umd.edu/faq" |
 
 Updating above links because previous ones were not working, I was wrong about certain links. I have also added two official UMD sources so that students can find almost everything just by asking LLM instead of having to go through multiple sources.
+
 ---
 
 ## Chunking Strategy
@@ -69,7 +72,9 @@ Updating above links because previous ones were not working, I was wrong about c
 **Model used:** all-MiniLM-L6-v2 via sentence-transformers for general semantic understanding and faster inference. Also used for its small size and fast processing time.
 
 **Production tradeoff reflection:**
+
 I would choose an embedding model that offers longer context windows to better understand full length of reviews and thread discussions even at the cost of higher latency. I would also add multilingual support which would cater to wider student body. As for domain-specific accuracy, I would consider fine-tuning a model that was trained on academic reviews and discussions, so that it can understand the semantic nuances of student feedback and advice. I would also consider hosting the model locally to reduce latency and ensure data privacy, especially since student reviews may contain sensitive information. However, I would need to weigh this against the maintenance and infrastructure costs of running a local model versus using an API-hosted solution that abstracts away those concerns.
+
 ---
 
 ## Grounded Generation
@@ -104,6 +109,7 @@ I have wrapped chunks in delimiters as "Retrieved sources" and "End of sources" 
 Also, chunks above Retrieval_score_cutoff are dropped before reaching the LLM, so low-relevance chunks are filtered out in retrieval stage. 
 
 If there were no chunks retrieved, LLM never gets called and the default message is "I don't have enough information in the retrieved sources to answer this question." This way it wouldn't hallucinate. 
+
 ---
 
 ## Evaluation Report
@@ -153,6 +159,7 @@ This would be a Noisy Chunk problem, here LLM says three people are professors o
 
 **What you would change to fix it:**
 I would strengthen the system prompt saying not to fill in a person's role unless explicitly stated in the retrieved chunks.
+
 ---
 
 ## Spec Reflection
@@ -168,6 +175,7 @@ Also, I have learned that the proper way to implement a project with help of AIs
 Well, my initial source links were extremely bad, it was not the way I expected it to work, the ingestion part did not work. So, I had to change my source links and improve the way I was fetching the data.
 
 And I said I would use copilot for milestone 4 and 5, but it hit some limtations and I had to change to Claude. 
+
 ---
 
 ## AI Usage
